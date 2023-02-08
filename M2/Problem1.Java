@@ -18,7 +18,9 @@ public class Problem1 {
     static void processArray(int[] arr){
         System.out.println("Processing Array:" + Arrays.toString(arr));
         System.out.println("Odds output:");
-        //TODO add/edit code here
+        //TODO add/edit code here //iag8
+                                  //IT114-006
+                                  //02/07/23
         for (int i=0; i<arr.length; i++){//Creates the forloop that gets variable i set to 0, compares it to the length of processArray(int[arr]) 
                                          //and stops when its no longer smaller, and finally it increments value i each time. 
 
