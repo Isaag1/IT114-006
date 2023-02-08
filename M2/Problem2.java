@@ -22,11 +22,13 @@ public class Problem2 {
         //TODO add/edit code here //iag8
                                   //IT114-006
                                   //02/07/23
+
         for (int i = 0; i < arr.length; i++) //Creates the forloop that gets variable i set to 0, compares it to the length of processArray(int[arr]) 
-        //and stops when its no longer smaller, and finally it increments value i each time.
+                                         //and stops when its no longer smaller, and finally it increments value i each time.
         total += arr[i];
         //set the double to a string variable
-        totalOutput = total+"";
+        totalOutput = String.format("%.2f",total); // Made totalOutput take the total variable and also used String.format to format the double we got
+                                                          //have a limit of 2 decimals
         //end add/edit section
         System.out.println("Total is " + totalOutput);
         System.out.println("End process");
