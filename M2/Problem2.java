@@ -27,7 +27,8 @@ public class Problem2 {
                                          //and stops when its no longer smaller, and finally it increments value i each time.
         total += arr[i];
         //set the double to a string variable
-        totalOutput = String.format("%.2f",total);
+        totalOutput = String.format("%.2f",total); // Made totalOutput take the total variable and also used String.format to format the double we got
+                                                          //have a limit of 2 decimals
         //end add/edit section
         System.out.println("Total is " + totalOutput);
         System.out.println("End process");
