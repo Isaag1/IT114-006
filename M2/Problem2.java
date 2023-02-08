@@ -23,7 +23,7 @@ public class Problem2 {
                                   //IT114-006
                                   //02/07/23
         for (int i = 0; i < arr.length; i++) //Creates the forloop that gets variable i set to 0, compares it to the length of processArray(int[arr]) 
-        //and stops when its no longer smaller, and finally it increments value i each time.
+                                         //and stops when its no longer smaller, and finally it increments value i each time.
         total += arr[i];
         //set the double to a string variable
         totalOutput = total+"";
