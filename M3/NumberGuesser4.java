@@ -117,24 +117,43 @@ public class NumberGuesser4 {
             level = 1;
         }
     }
+    
 
     private void processGuess(int guess) {
         if (guess < 0) {
-            return;
-        }
-        System.out.println("You guessed " + guess);
-        if (guess == number) {
-            win();
-            pickNewRandom = true;
+        return;
+    }
+    System.out.println("You guessed " + guess);
+
+    //iag8
+    //IT114-006
+    //02/07/23
+    if (guess == number) { //Checks to see if guess is the same as number and if its correct then it runs win() which lets you win that level and runs pickNewRandom
+        win();
+        pickNewRandom = true;
+    } else {        //Start of option 4
+                //If the if statement isnt valid, then this else statement runs
+        int diff = Math.abs(guess - number); //Creates int diff which gets the value of guess and subtracts it by the number 
+        if (diff > 6) {                      //If diff (the difference of guess and number) is greater then 6, then it prints "this is cold"
+            System.out.println("That is cold");  //If diff (the difference of guess and number) is greater then 6, then it prints "this is cold"
+        } else if (diff > 3) {                      //If the number is not greater then 6, it runs this line to check if it is atleast greater then 3 but smaller then 6
+            System.out.println("That is warm");  //If meets those reqierments, then it prints "This is warm"
         } else {
-            System.out.println("That's wrong");
-            strikes++;
-            if (strikes >= maxStrikes) {
-                lose();
-                pickNewRandom = true;
-            }
+            System.out.println("That is hot");  //If its not greater then 3 then it prints this is hot
+        }
+        strikes++; //incrments strikes
+        if (strikes >= maxStrikes) {  //if the strikes reach the maxStrikes allowed, it runs lose()
+            lose();
+            pickNewRandom = true;
+            //start of option 1
+        } else if (guess > number) { //if your guesss is bigger then the number, it runs "Your next guess should be a lower number"
+            System.out.println("Your next guess should be a lower number");
+        } else if (guess < number) { //if your guesss is smaller then the number, it runs "Your next guess should be a higher number"
+            System.out.println("Your next guess should be a higher number");
         }
     }
+}
+    
 
     private int strToNum(String message) {
         int guess = -1;
