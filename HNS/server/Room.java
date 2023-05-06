@@ -19,6 +19,7 @@ public class Room implements AutoCloseable {
     private final static String DISCONNECT = "disconnect";
     private final static String LOGOUT = "logout";
     private final static String LOGOFF = "logoff";
+    private final static String FLIP = "flip";
     private static Logger logger = Logger.getLogger(Room.class.getName());
 
     public Room(String name) {
