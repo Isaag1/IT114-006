@@ -27,6 +27,7 @@ public class Room implements AutoCloseable {
 	private List<String> chatHistory = new ArrayList<>();
 
 	// Commands
+
 	//iag8
 	private final static String COMMAND_TRIGGER = "/";
 	private final static String CREATE_ROOM = "createroom";
@@ -38,7 +39,7 @@ public class Room implements AutoCloseable {
 	private final static String UNMUTE = "unmute";
 	private final static String FLIP = "flip";
 	private final static String ROLL = "roll";
-	private final static String EXPORT = "export";
+	private final static String EXPORT = "export"; //did not work
 	
 	private static Logger logger = Logger.getLogger(Room.class.getName());
 	private HashMap<String, String> converter = null;
@@ -145,15 +146,12 @@ public class Room implements AutoCloseable {
 						sendMessage(client, userName, client.getClientName() + " has unmuted you");
 						client.removeFromMutedList(userName);
 						break;
-					case EXPORT:
-						userName = comm2[1];
-						sendMessage(client, " exported chat to chat_history.txt");
-							exportChatHistory("chat_history.txt");
-						break;
-						
+					
+						//iag8 4/11/23
 					case FLIP:
 						sendMessage(client, Flip());
 						break;
+						//iag8 4/11/23
 					case ROLL:
 						String number = Room.roll();
 						sendMessage(client, number);
@@ -216,7 +214,7 @@ public class Room implements AutoCloseable {
         return  "#r#" + result +  "#r#";
 	}
 
-	//iag8 4/1123
+	//iag8 4/11/23
     public static String roll() {
 		Random rand = new Random();
 		int random = rand.nextInt(10) + 1;
@@ -230,18 +228,7 @@ public class Room implements AutoCloseable {
 
 	}
 
-	public synchronized void exportChatHistory(String fileName) {
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-			for (String message : chatHistory) {
-				writer.write(message);
-				writer.newLine();
-			}
-		} catch (IOException e) {
-			System.err.println("Error exporting chat history to file: " + fileName);
-			e.printStackTrace();
-		}
-	}
-
+	
 	//helper methods
 
 	/***
@@ -391,11 +378,17 @@ public class Room implements AutoCloseable {
 			converter = new HashMap<String, String>();
 		
 			converter.put("\\*{2}", "<b>|</b>");
+
 			converter.put("--", "<i>|</i>");
+
 			converter.put("__", "<u>|</u>");
+
 			converter.put("#r#", "<font color=\"red\">|</font>");
+
 			converter.put("#g#", "<font color=\"green\">|</font>");
+
 			converter.put("#b#", "<font color=\"blue\">|</font>");
+
 		}
 		for (Entry<String, String> kvp : converter.entrySet()) {
 			if (GeneralUtils.countOccurencesInString(alteredMessage, kvp.getKey().toLowerCase()) >= 2) {

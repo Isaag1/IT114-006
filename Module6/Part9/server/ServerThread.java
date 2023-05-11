@@ -181,7 +181,7 @@ public class ServerThread extends Thread {
             cleanup();
         }
     }
-    //iag8 5/1/23
+    //iag8 5/3/23
     void processPayload(Payload p) {
         switch (p.getPayloadType()) {
             case CONNECT:
@@ -191,13 +191,16 @@ public class ServerThread extends Thread {
                 break;
             case MESSAGE:
                 if (currentRoom != null) {
+
                     if (p.getMessage().startsWith("/flip")) {
                         currentRoom.sendMessage(this, "<b>#r#" + flip() + "#r#</b>");
                     }
+
                     else if (p.getMessage().startsWith("/roll"))
                     {   
                         currentRoom.sendMessage(this, "<b>#g#" + roll() + "</b>#g#");
                     }
+                    
                     else if (p.getMessage().startsWith("@")) {
                         String message = p.getMessage();
 
