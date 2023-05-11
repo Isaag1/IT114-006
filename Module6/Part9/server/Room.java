@@ -28,7 +28,7 @@ public class Room implements AutoCloseable {
 
 	// Commands
 
-	//iag8
+	//iag8 4/13/23
 	private final static String COMMAND_TRIGGER = "/";
 	private final static String CREATE_ROOM = "createroom";
 	private final static String JOIN_ROOM = "joinroom";
@@ -135,7 +135,7 @@ public class Room implements AutoCloseable {
 
 					case MUTE:
 						userName = comm2[1];
-						sendMessage(client, userName, client.getClientName() + " has muted you");
+						sendMessage(client, userName, client.getClientName() + "  muted you");
 						client.addToMutedList(userName);
 						break;
 
@@ -143,7 +143,7 @@ public class Room implements AutoCloseable {
 
 					case UNMUTE:
 						userName = comm2[1];
-						sendMessage(client, userName, client.getClientName() + " has unmuted you");
+						sendMessage(client, userName, client.getClientName() + "  unmuted you");
 						client.removeFromMutedList(userName);
 						break;
 					
@@ -204,13 +204,14 @@ public class Room implements AutoCloseable {
 
         Random rand = new Random();
         face = rand.nextInt(1);
-        
+        // Randomly generate a number between 0 and 1 If the generated number is 0, assign "Heads!" to the result variable. Otherwise, assign "Tails!" to the result variable
         if(face == 0)
             result = "Heads!";
         
         else
             result = "Tails!";
-        
+            // Return the formatted result string with red font color tags
+
         return  "#r#" + result +  "#r#";
 	}
 
@@ -218,11 +219,15 @@ public class Room implements AutoCloseable {
     public static String roll() {
 		Random rand = new Random();
 		int random = rand.nextInt(10) + 1;
+		// Generate a random number between 1 and 10 print the random number to the console 10 times 
 		for (int i = 0; i < 10; i++) {
 			System.out.println(random);
 
-		}
+		}   
+		 // Convert the random number to a string with leading space
+
 		String number = " " + random;
+  		 // Return the formatted number string with blue font color tags
 
 		return "#b#" + number + "#b#";
 
