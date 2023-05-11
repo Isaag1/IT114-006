@@ -27,7 +27,8 @@ public class Room implements AutoCloseable {
 	private List<String> chatHistory = new ArrayList<>();
 
 	// Commands
-	//iag8
+
+	//iag8 4/13/23
 	private final static String COMMAND_TRIGGER = "/";
 	private final static String CREATE_ROOM = "createroom";
 	private final static String JOIN_ROOM = "joinroom";
@@ -38,7 +39,7 @@ public class Room implements AutoCloseable {
 	private final static String UNMUTE = "unmute";
 	private final static String FLIP = "flip";
 	private final static String ROLL = "roll";
-	private final static String EXPORT = "export";
+	private final static String EXPORT = "export"; //did not work
 	
 	private static Logger logger = Logger.getLogger(Room.class.getName());
 	private HashMap<String, String> converter = null;
@@ -134,7 +135,7 @@ public class Room implements AutoCloseable {
 
 					case MUTE:
 						userName = comm2[1];
-						sendMessage(client, userName, client.getClientName() + " has muted you");
+						sendMessage(client, userName, client.getClientName() + "  muted you");
 						client.addToMutedList(userName);
 						break;
 
@@ -142,18 +143,15 @@ public class Room implements AutoCloseable {
 
 					case UNMUTE:
 						userName = comm2[1];
-						sendMessage(client, userName, client.getClientName() + " has unmuted you");
+						sendMessage(client, userName, client.getClientName() + "  unmuted you");
 						client.removeFromMutedList(userName);
 						break;
-					case EXPORT:
-						userName = comm2[1];
-						sendMessage(client, " exported chat to chat_history.txt");
-							exportChatHistory("chat_history.txt");
-						break;
-						
+					
+						//iag8 4/11/23
 					case FLIP:
 						sendMessage(client, Flip());
 						break;
+						//iag8 4/11/23
 					case ROLL:
 						String number = Room.roll();
 						sendMessage(client, number);
@@ -206,42 +204,36 @@ public class Room implements AutoCloseable {
 
         Random rand = new Random();
         face = rand.nextInt(1);
-        
+        // Randomly generate a number between 0 and 1 If the generated number is 0, assign "Heads!" to the result variable. Otherwise, assign "Tails!" to the result variable
         if(face == 0)
             result = "Heads!";
         
         else
             result = "Tails!";
-        
+            // Return the formatted result string with red font color tags
+
         return  "#r#" + result +  "#r#";
 	}
 
-	//iag8 4/1123
+	//iag8 4/11/23
     public static String roll() {
 		Random rand = new Random();
 		int random = rand.nextInt(10) + 1;
+		// Generate a random number between 1 and 10 print the random number to the console 10 times 
 		for (int i = 0; i < 10; i++) {
 			System.out.println(random);
 
-		}
+		}   
+		 // Convert the random number to a string with leading space
+
 		String number = " " + random;
+  		 // Return the formatted number string with blue font color tags
 
 		return "#b#" + number + "#b#";
 
 	}
 
-	public synchronized void exportChatHistory(String fileName) {
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-			for (String message : chatHistory) {
-				writer.write(message);
-				writer.newLine();
-			}
-		} catch (IOException e) {
-			System.err.println("Error exporting chat history to file: " + fileName);
-			e.printStackTrace();
-		}
-	}
-
+	
 	//helper methods
 
 	/***
@@ -391,11 +383,17 @@ public class Room implements AutoCloseable {
 			converter = new HashMap<String, String>();
 		
 			converter.put("\\*{2}", "<b>|</b>");
+
 			converter.put("--", "<i>|</i>");
+
 			converter.put("__", "<u>|</u>");
+
 			converter.put("#r#", "<font color=\"red\">|</font>");
+
 			converter.put("#g#", "<font color=\"green\">|</font>");
+
 			converter.put("#b#", "<font color=\"blue\">|</font>");
+
 		}
 		for (Entry<String, String> kvp : converter.entrySet()) {
 			if (GeneralUtils.countOccurencesInString(alteredMessage, kvp.getKey().toLowerCase()) >= 2) {

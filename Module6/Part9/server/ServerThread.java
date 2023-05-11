@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import Module6.Part9.common.Payload;
 import Module6.Part9.common.PayloadType;
 import Module6.Part9.common.RoomResultPayload;
-
 /**
  * A server-side representation of a single client
  */
@@ -181,7 +180,7 @@ public class ServerThread extends Thread {
             cleanup();
         }
     }
-    //iag8 5/1/23
+    //iag8 5/3/23
     void processPayload(Payload p) {
         switch (p.getPayloadType()) {
             case CONNECT:
@@ -190,19 +189,35 @@ public class ServerThread extends Thread {
             case DISCONNECT:
                 break;
             case MESSAGE:
+            //iag8 5/3/23
+                // Check if there is a valid room to handle the message
+
                 if (currentRoom != null) {
+                 // Check if the message starts with "/flip"
+
                     if (p.getMessage().startsWith("/flip")) {
+                // Call the flip() function and send the result to the current room
+
                         currentRoom.sendMessage(this, "<b>#r#" + flip() + "#r#</b>");
                     }
+                // Check if the message starts with "/roll"
+
                     else if (p.getMessage().startsWith("/roll"))
                     {   
+                // Call the roll() function and send the result to the current room
                         currentRoom.sendMessage(this, "<b>#g#" + roll() + "</b>#g#");
                     }
+                // Check if the message starts with "@"
+
                     else if (p.getMessage().startsWith("@")) {
                         String message = p.getMessage();
+                // Get the username by finding the substring between "@" and the first space
 
                         String username = message.substring(1,message.indexOf(" "));
-                        currentRoom.sendMessage(this, username, message.substring(message.indexOf(" ") + 1));
+                // Extract the rest of the message after the first space
+                         currentRoom.sendMessage(this, username, message.substring(message.indexOf(" ") + 1));
+                // Send the message to the current room, addressing it to the specified username
+
                     } 
                     else {
                         currentRoom.sendMessage(this, p.getMessage());
@@ -250,16 +265,19 @@ public class ServerThread extends Thread {
         return toss;
     }
     
+// This method adds a name to the muted list.
 
     public void addToMutedList(String name) {
 
         mutedList.add(name);
     }
+// This method checks if a name is present in the muted list.
 
     public boolean inMutedList(String name) {
         return mutedList.contains(name);
     }
-    
+// This method removes a name from the muted list.
+
     public void removeFromMutedList(String name) {
         mutedList.remove(name);
     }

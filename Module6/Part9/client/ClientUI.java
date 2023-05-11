@@ -670,7 +670,7 @@ public class ClientUI extends JFrame implements IClientEvents {
                 JEditorPane jp = (JEditorPane)(c);
                 System.out.println("Highlighting for "  + c.getName());
                 jp.setOpaque(true);
-                jp.setBackground(Color.yellow);
+                jp.setBackground(Color.RED);
                 jp.repaint();
                 break;
             }
