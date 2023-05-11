@@ -6,9 +6,11 @@ public class Payload implements Serializable {
     // read https://www.baeldung.com/java-serial-version-uid
     private static final long serialVersionUID = 3L;
 
-    /**
-     * Determines how to process the data on the receiver's side
-     */
+
+    //iag8
+
+   // Determines the type of data in the payload and how it should be processed on the receiver's side.
+     
     private PayloadType payloadType;
 
     public PayloadType getPayloadType() {
@@ -19,9 +21,8 @@ public class Payload implements Serializable {
         this.payloadType = payloadType;
     }
 
-    /**
-     * Who the payload is from
-     */
+    // Represents the source of the payload.
+     
     private String clientName;
 
     public String getClientName() {
@@ -42,9 +43,8 @@ public class Payload implements Serializable {
         this.clientId = clientId;
     }
 
-    /**
-     * Generic text based message
-     */
+    // A generic text-based message.
+     
     private String message;
 
     public String getMessage() {
@@ -55,9 +55,9 @@ public class Payload implements Serializable {
         this.message = message;
     }
 
-    /**
-     * Generic number for example sake
-     */
+    //A generic number used for example purposes.
+     
+
     private int number;
 
     public int getNumber() {

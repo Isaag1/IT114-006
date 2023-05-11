@@ -27,6 +27,7 @@ public class Room implements AutoCloseable {
 	private List<String> chatHistory = new ArrayList<>();
 
 	// Commands
+	//iag8
 	private final static String COMMAND_TRIGGER = "/";
 	private final static String CREATE_ROOM = "createroom";
 	private final static String JOIN_ROOM = "joinroom";
@@ -146,7 +147,7 @@ public class Room implements AutoCloseable {
 						break;
 					case EXPORT:
 						userName = comm2[1];
-						sendMessage(client, " has exported the chat to chat_history.txt");
+						sendMessage(client, " exported chat to chat_history.txt");
 							exportChatHistory("chat_history.txt");
 						break;
 						
