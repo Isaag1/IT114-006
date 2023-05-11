@@ -1,6 +1,6 @@
 <table><tr><td> <em>Assignment: </em> IT114 Chatroom Milestone4</td></tr>
 <tr><td> <em>Student: </em> Isaac Guerrero (iag8)</td></tr>
-<tr><td> <em>Generated: </em> 5/11/2023 12:13:03 AM</td></tr>
+<tr><td> <em>Generated: </em> 5/11/2023 12:15:09 AM</td></tr>
 <tr><td> <em>Grading Link: </em> <a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IT114-006-S23/it114-chatroom-milestone4/grade/iag8" target="_blank">Grading</a></td></tr></table>
 <table><tr><td> <em>Instructions: </em> <p>Implement the features from Milestone3 from the proposal document:&nbsp;&nbsp;<a href="https://docs.google.com/document/d/1ONmvEvel97GTFPGfVwwQC96xSsobbSbk56145XizQG4/view">https://docs.google.com/document/d/1ONmvEvel97GTFPGfVwwQC96xSsobbSbk56145XizQG4/view</a></p>
 </td></tr></table>
@@ -58,6 +58,6 @@
 </td></tr>
 </table></td></tr>
 <tr><td> <em>Sub-Task 3: </em> Briefly explain how you implemented this</td></tr>
-<tr><td> <em>Response:</em> <p>In the clientUI.java, the code updates the color of JEditorPane to red. When<br>a user sends a message it highlights the last user to send a<br>message and then ressets the new users and while resetting the previous users<br>background color. When a user types /mute it changes the background and then<br>resets back after unmuting.<br></p><br></td></tr>
+<tr><td> <em>Response:</em> <p>In the clientUI.java, the code updates the color of JEditorPane to red. When<br>a user sends a message it highlights the last user to send a<br>message and then ressets the new users and while resetting the previous users<br>background color. When a user types /mute it changes the background and then<br>resets back after unmuting<br></p><br></td></tr>
 </table></td></tr>
 <table><tr><td><em>Grading Link: </em><a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IT114-006-S23/it114-chatroom-milestone4/grade/iag8" target="_blank">Grading</a></td></tr></table>
